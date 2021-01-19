@@ -1,27 +1,49 @@
-<div class="po-wrapper">
-  <po-toolbar p-title="AppName"></po-toolbar>
+<po-page-default p-title="PO UI">
 
-  <po-menu [p-menus]="menus"></po-menu>
-
-  <po-page-default p-title="AppName">
-    <po-page-default p-title="PO UI">
-      <po-page-slide #inclusaoPrevisaoEntrega
-    p-title="Erro com Po-Page Slide"
-    p-size="sm"
-    >
-    <po-lookup
+<po-page-slide #inclusaoPrevisaoEntrega
+  p-title="Erro com Po-Page Slide" p-size="sm"
+  p-click-out="true" >
+  <po-lookup
     name="lookup"
     p-field-label="label"
     p-field-value="value"
     p-filter-service="https://po-sample-api.herokuapp.com/v1/heroes"
-    p-label="Abrir PO Lookup - Ao clicar em algum registro ocorre erro."    >
-    </po-lookup>
+    p-label="Abrir PO Lookup - Ao clicar em algum registro ocorre erro."
+  >
+  </po-lookup>
 
-    </po-page-slide>
+<po-button p-label="Modal"
+  p-type="primary" (p-click)="modal.open()">
+</po-button>
 
-    <po-button p-label="Abrir Page Slide"    p-type="primary"
-    (p-click)="inclusaoPrevisaoEntrega.open()">
-    </po-button>
-    </po-page-default>
-  </po-page-default>
-</div>
+</po-page-slide>
+
+<po-button p-label="Page Slide"
+  p-type="primary" (p-click)="inclusaoPrevisaoEntrega.open()">
+</po-button>
+
+
+</po-page-default>
+
+<po-modal
+  #modal
+    p-click-out="true"
+    p-hide-close="true"
+    p-title="edit" >
+          <po-input
+        class="po-md-4"
+        name="codigo"
+        p-label="codigo"
+      ></po-input>
+                <po-input
+        class="po-md-4"
+        name="descricao"
+        p-label="descricao"
+      ></po-input>
+        <po-select
+        class="po-md-4"
+        name="tipo"
+        p-label="tipo"
+        [p-options]="[{value: 1, label: 1},{value: 2, label: 2}]"
+      ></po-select>
+</po-modal>
